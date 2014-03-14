@@ -12,6 +12,7 @@ Made specifically to be used with Thrift 1.0.0
 
 Create a table:
 
+```ruby
   require 'rubygems'
   require 'hbase_thrift_ruby'
 
@@ -31,3 +32,4 @@ Create a table:
   columns << col_descriptor
 
   client.createTable('test_table',columns)
+```

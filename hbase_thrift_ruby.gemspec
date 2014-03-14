@@ -6,21 +6,19 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jean Lescure"]
-  s.date = "2014-02-21"
-  s.description = "SQL to HBase parser using Treetop (output based on Thrift). Doing all this before it was cool."
+  s.date = "2014-03-13"
+  s.description = "This is an updated HBase wrapper based on Thrift 1.0.0, gemified and ready to be used with Ruby."
   s.email = "jeanmlescure@gmail.com"
   s.extra_rdoc_files = [
-    "LICENSE",
     "LICENSE.txt",
-    "README.md",
-    "README.rdoc"
+    "README.md"
   ]
-  s.files = Dir.glob("{lib,spec}/**/*") + %w(.document Gemfile LICENSE LICENSE.txt README.md README.rdoc Rakefile VERSION hipster_sql_to_hbase.gemspec)
+  s.files = Dir.glob("{lib,spec}/**/*") + %w(.document Gemfile LICENSE.txt README.md Rakefile VERSION hbase_thrift_ruby.gemspec)
   s.homepage = "http://github.com/jeanlescure/hbase_thrift_ruby"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.3"
-  s.summary = "SQL to HBase parser using Treetop (output based on Thrift)."
+  s.summary = "Simplified HBase Thrift API wrapper for Ruby."
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

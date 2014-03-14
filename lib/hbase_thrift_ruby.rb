@@ -13,13 +13,13 @@ module Hbase
   end
   
   class Client
-    def incrementAndReturn(table_name,amount)
+    def incrementRow(table_name,amount)
       c_row = get('table_indices','0',table_name,{})[0].value.to_i
       n_row = c_row+amount
       mutateRow('table_indices','0',[HBase::Mutation.new(column: table_name, value: n_row.to_s)],{})
       c_row
     end
-    def getRowsByScanner(table,columns,filters,obj={})
+    def get(table,columns,filters,obj={})
       scan = HBase::TScan.new
       scan.filterString = filters
       scanner = scannerOpenWithScan(table, scan, obj)
@@ -41,11 +41,12 @@ module Hbase
         row_results = []
         if columns[0] == '*'
           getRow(table,row,{})[0].columns.each do |val|
-            row_results << val.value
+            row_results << val[1].value
           end
         else
           columns.each do |col|
-            row_results << getRow(table,row,{})[0].columns["#{col}:"].value rescue row_results << nil
+            col = "#{col}:" if col.match(/:/).nil?
+            row_results << getRow(table,row,{})[0].columns[col].value rescue row_results << nil
           end
         end
         results << row_results
